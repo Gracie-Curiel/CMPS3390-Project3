@@ -1,7 +1,70 @@
+import React, { useState } from 'react';
 export default function Signin() {
+  const[formInput,setFormInput] = useState({
+    userName:"",
+    password:""
+  })
+  const[loginError, setLoginError] = useState({
+    userName:"",
+    password:""
+  })
+  const[message, setMessage] = useState("");
+
+  const handleChange = (e) =>{
+  const{name, value} = e.target;
+   setFormInput({...formInput, [name]:value
+
+   });
+  }
+  const handleSubmit = (e) =>{
+  e.preventDefault();
+  
+  const isValid = validateLoginInput();
+  
+  if(Object.keys(isValid).length === 0){
+    setMessage("Login  is Sucessful!");
+  }else{
+    setMessage("Invalid Username/Password");
+  }
+  // < = api/login verifying if thw password and username is correct. will insert more stuff here =>
+  }
+  const isValidUsername = (userName) => {
+  const validUserName = "@";
+  if(userName.includes("@")){
+  return true;
+  }else{
+  return false;
+  }
+}
+  const validateLoginInput = () => {
+    let errors = {};
+    if(!formInput.userName){
+  errors.userName = "Username is required!";
+}else if(!isValidUsername(formInput.userName)){
+  errors.userName = "Username must contain '@'";
+}
+if(!formInput.password){
+  errors.password = "Password is required";
+}
+setLoginError(errors);
+return errors;
+  }
   return (
-    <div style={{ textAlign: "center", padding: "4rem", background: "white" }}>
-      <h1 style={{ fontSize: "3rem" }}>Sign In View</h1>
-    </div>
+    <form onSubmit={handleSubmit}>
+    
+      <h2>SignIn</h2>
+     <label> UserName:</label>
+     <br></br>
+      <input type="text" id="userName"  name ="userName" value={formInput.userName} placeholder="UserName" onChange={handleChange}/>
+      <p>{loginError.userName}</p>
+        <label> Password:</label>
+        <br></br>
+      <input type="password" id="password"  name ="password" value={formInput.password} placeholder="Password" onChange={handleChange}/>
+      <p>{loginError.password}</p>
+  <input type ="submit" value="Login"/>
+      {message&& (<p>{message}</p> 
+      )}
+    </form>
+
   );
 }
