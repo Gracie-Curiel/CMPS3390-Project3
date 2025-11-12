@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 export default function Signin() {
+  
   const[formInput,setFormInput] = useState({
     userName:"",
     password:""
@@ -51,19 +52,25 @@ return errors;
   }
   return (
     <form onSubmit={handleSubmit}>
-    
-      <h2>SignIn</h2>
-     <label> UserName:</label>
+    <div className ="Form-container">
+      <div className="form-card">
+      <h2 className="Title-2">SignIn</h2>
+     <label> UserName:</label> 
      <br></br>
-      <input type="text" id="userName"  name ="userName" value={formInput.userName} placeholder="UserName" onChange={handleChange}/>
+      <input type="text" id="userName" className="form-input"  name ="userName" value={formInput.userName} placeholder="UserName" onChange={handleChange}/>
       <p>{loginError.userName}</p>
         <label> Password:</label>
         <br></br>
-      <input type="password" id="password"  name ="password" value={formInput.password} placeholder="Password" onChange={handleChange}/>
+      <input type="password" id="password" className="form-input"  name ="password" value={formInput.password} placeholder="Password" onChange={handleChange}/>
       <p>{loginError.password}</p>
-  <input type ="submit" value="Login"/>
+    
+     <button type ="submit" className="btn">Login </button>
+      <div classname="msg">
       {message&& (<p>{message}</p> 
       )}
+      </div>
+      </div>
+      </div>
     </form>
 
   );

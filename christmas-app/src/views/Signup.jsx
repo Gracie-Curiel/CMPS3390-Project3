@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
+import "../styles.css";
 //api url inssert here 
 export default function Signup() {
   const navigate = useNavigate(); 
@@ -78,48 +79,53 @@ const handleSubmit = (e) =>{
 }
   return (
  <form onSubmit = {handleSubmit}>
-    <div className="container">
-      <div className="card"></div>
-      <h1 className="Title"> Create an Account</h1>
-      <h2>Sign Up</h2>
-      <label> First Name:</label>
+    
+    <div id="form-container"> 
+      <div className="form-card">
+      <h1 className ="Title">Login/Signup </h1>
+      <div className='Input-container'>
+      <label for="firstName"> First Name:</label>
       <br></br>
       <input 
       type = "text" 
-      id="firstName" 
-      name ='firstName' 
+      id="firstName"
+      className="form-input" 
+      name ="firstName" 
       value={formInput.firstName} 
       placeholder="First Name"  
       onChange={handleChange} /> 
       <br></br>
       <p>{formError.firstName}</p>
       
-      <label> LastName:</label>
+      <label for="lastName">LastName:</label>
       <br></br>
-      <input 
+      <input  
       type = "text" 
       id="lastName" 
-      name ='lastName'  
+      className="form-input" 
+      name ="lastName"  
       value={formInput.lastName}
        placeholder="Last Name" 
       onChange={handleChange} /> 
       <br></br>
       <p>{formError.lastName}</p>
       
-      <label> UserName:</label>
+      <label for="userName"> UserName:</label>
       <br></br>
       <input 
       type = "text" 
-      id="userName" 
+      id="userName"
+      className="form-input"  
       name ='userName' 
       value={formInput.userName} 
       placeholder="UserName" 
       onChange={handleChange}/> 
        <br></br>
       <p>{formError.userName}</p>  
-      <label> Password:</label><br></br>
+      <label for="password"> Password:</label><br></br>
       <input type = "password"
        id="password"
+       className="form-input" 
        name ='password' 
        value={formInput.password} 
        placeholder="Password"  
@@ -127,21 +133,26 @@ const handleSubmit = (e) =>{
        <br></br>
       <p>{formError.password}</p>
 
-      <label> ConfirmPassword:</label>
+      <label for="confirmPassword"> ConfirmPassword:</label>
       <br></br>
       <input 
       type = "password" 
-      id="confirmPassword" 
+      id="confirmPassword"
+      className="form-input"  
       name ="confirmPassword" 
       value={formInput.confirmPassword}  
       onChange={handleChange} 
       placeholder="Re-Enter password"/> <br></br>
       <p>{formError.confirmPassword}</p>
-  
-      <input type ="submit"  value="SignUp"/>
+      </div>
+      <button type ="submit" className="btn">Create an account </button>
+      <p id="account"> Already have an account? < a href="/Signin">Login</a> </p>
+       <div classname="msg">
       {message&& (<p>{message}</p> // if message isnt empty show the message 
       )}
+      </div>
       
+      </div>
       </div>
    </form>
   );

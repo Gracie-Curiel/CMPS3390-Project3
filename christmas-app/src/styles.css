@@ -1,0 +1,13 @@
+
+#form-container{
+    background-color: cornsilk;
+    width:420px;
+    margin: auto;
+    padding:20px;
+}
+.form-input{
+    background-color:white;
+    width:350px;
+    padding:10px;
+    border-radius: 5px;
+}
