@@ -65,6 +65,7 @@ return errors;
       <p>{loginError.password}</p>
     
      <button type ="submit" className="btn">Login </button>
+      <p id="account"> Need to create an account? < a href="/Signup">Click here</a> </p>
       <div classname="msg">
       {message&& (<p>{message}</p> 
       )}
