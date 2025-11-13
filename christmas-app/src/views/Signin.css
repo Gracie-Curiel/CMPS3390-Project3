@@ -1,0 +1,87 @@
+/* Background and Image */
+.signin-bg {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url("../background.jpg") center/cover no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Form Card */
+.form-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 500px;
+}
+
+/* Title */
+.Title-2 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+/* Labels & Inputs */
+label {
+  font-weight: 500;
+  color: #0d3b0d; 
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 5px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* Button */
+.btn {
+  background-color: #b30000;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0d3b0d; 
+  transform: scale(1.05);
+}
+
+/*  Account link */
+#account {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #222;
+}
+
+#account a {
+  color: #b30000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#account a:hover {
+  text-decoration: underline;
+}
+
+/*  Messages  */
+.msg p {
+  margin-top: 0.5rem;
+  color: #0d3b0d;
+  font-weight: 500;
+}
