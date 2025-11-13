@@ -32,7 +32,7 @@
 /* Labels & Inputs */
 label {
   font-weight: 500;
-  color: #0d3b0d; 
+  color: #7a827a; 
 }
 
 .form-input {
@@ -66,7 +66,7 @@ label {
 #account {
   margin-top: 1rem;
   font-size: 0.9rem;
-  color: #222;
+  color: #ffffff;
 }
 
 #account a {
