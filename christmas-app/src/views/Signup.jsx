@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
+import "./Signup.css";
 //api url inssert here 
 export default function Signup() {
   const navigate = useNavigate(); 
@@ -77,72 +78,82 @@ const handleSubmit = (e) =>{
  //adding api route - adding users the database
 }
   return (
- <form onSubmit = {handleSubmit}>
-    <div className="container">
-      <div className="card"></div>
-      <h1 className="Title"> Create an Account</h1>
-      <h2>Sign Up</h2>
-      <label> First Name:</label>
-      <br></br>
-      <input 
-      type = "text" 
-      id="firstName" 
-      name ='firstName' 
-      value={formInput.firstName} 
-      placeholder="First Name"  
-      onChange={handleChange} /> 
-      <br></br>
-      <p>{formError.firstName}</p>
-      
-      <label> LastName:</label>
-      <br></br>
-      <input 
-      type = "text" 
-      id="lastName" 
-      name ='lastName'  
-      value={formInput.lastName}
-       placeholder="Last Name" 
-      onChange={handleChange} /> 
-      <br></br>
-      <p>{formError.lastName}</p>
-      
-      <label> UserName:</label>
-      <br></br>
-      <input 
-      type = "text" 
-      id="userName" 
-      name ='userName' 
-      value={formInput.userName} 
-      placeholder="UserName" 
-      onChange={handleChange}/> 
-       <br></br>
-      <p>{formError.userName}</p>  
-      <label> Password:</label><br></br>
-      <input type = "password"
-       id="password"
-       name ='password' 
-       value={formInput.password} 
-       placeholder="Password"  
-       onChange={handleChange} /> 
-       <br></br>
-      <p>{formError.password}</p>
+    <div className="signup-bg">
+      <form onSubmit={handleSubmit}>
+        <div className="form-card">
+          <h1 className="Title">Create an Account</h1>
 
-      <label> ConfirmPassword:</label>
-      <br></br>
-      <input 
-      type = "password" 
-      id="confirmPassword" 
-      name ="confirmPassword" 
-      value={formInput.confirmPassword}  
-      onChange={handleChange} 
-      placeholder="Re-Enter password"/> <br></br>
-      <p>{formError.confirmPassword}</p>
-  
-      <input type ="submit"  value="SignUp"/>
-      {message&& (<p>{message}</p> // if message isnt empty show the message 
-      )}
-      
-      </div>
-   </form>
+          <label htmlFor="firstName">First Name:</label>
+          <input
+            type="text"
+            id="firstName"
+            className="form-input"
+            name="firstName"
+            value={formInput.firstName}
+            placeholder="Enter first name"
+            onChange={handleChange}
+          />
+          <p>{formError.firstName}</p>
+
+          <label htmlFor="lastName">Last Name:</label>
+          <input
+            type="text"
+            id="lastName"
+            className="form-input"
+            name="lastName"
+            value={formInput.lastName}
+            placeholder="Enter last name"
+            onChange={handleChange}
+          />
+          <p>{formError.lastName}</p>
+
+          <label htmlFor="userName">Username:</label>
+          <input
+            type="text"
+            id="userName"
+            className="form-input"
+            name="userName"
+            value={formInput.userName}
+            placeholder="Enter username"
+            onChange={handleChange}
+          />
+          <p>{formError.userName}</p>
+
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            className="form-input"
+            name="password"
+            value={formInput.password}
+            placeholder="Enter password"
+            onChange={handleChange}
+          />
+          <p>{formError.password}</p>
+
+          <label htmlFor="confirmPassword">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            className="form-input"
+            name="confirmPassword"
+            value={formInput.confirmPassword}
+            placeholder="Re-enter password"
+            onChange={handleChange}
+          />
+          <p>{formError.confirmPassword}</p>
+
+          <button type="submit" className="btn">
+            Create Account
+          </button>
+
+          <p id="account">
+            Already have an account?  <a href="/signin">Login</a>
+          </p>
+
+          {message && <p className="msg">{message}</p>}
+        </div>
+      </form>
+    </div>
   );
 }
