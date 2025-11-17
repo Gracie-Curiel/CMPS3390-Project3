@@ -1,0 +1,32 @@
+/* Dashboard.css */
+
+/* Navbar background and shadow */
+.navbar {
+  background-color: #f9fafb; /* Slightly lighter than base-100 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* Hover transition for links */
+.navbar a {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #2563eb; /* Tailwind blue-600 */
+}
+
+/* Dropdown menu styling */
+.menu ul {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Active or focused link */
+.menu a:focus,
+.menu a:active {
+  background-color: #e0e7ff; /* blue-100 */
+  font-weight: 500;
+}
