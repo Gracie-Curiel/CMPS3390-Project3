@@ -10,8 +10,8 @@ export default function Dashboard({ totalBudget, totalSpent }) {
   }
   //passing parameters from giftlist
   const data = [
-    { name: "Total-Budget", value: totalBudget },
-    { name: "Total-Spent", value: totalSpent },
+    { name: "Total-Budget", value: user.totalBudget },
+    { name: "Total-Spent", value: user.spentBudget },
   ];
   const Colors = ["#4CAF50", "#FF6B6B"];
 
