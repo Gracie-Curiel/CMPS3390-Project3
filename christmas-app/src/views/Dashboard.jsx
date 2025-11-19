@@ -1,6 +1,6 @@
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
-import { PieChart, Pie, cell, Cell, Tooltip } from "recharts";
+import { PieChart, Pie, Cell, Tooltip } from "recharts";
 
 export default function Dashboard({ totalBudget, totalSpent }) {
   //passing parameters from giftlist
