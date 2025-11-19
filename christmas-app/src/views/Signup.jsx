@@ -19,10 +19,8 @@ import "./Signup.css";
 //api url inssert here 
 export default function Signup() {
   const navigate = useNavigate();
-  const navigate = useNavigate();
   //Use States()
   const [isSubmit, setIsSubmit] = useState(false);
-  const [message, setMessage] = useState("");
   const [message, setMessage] = useState("");
   const [formInput, setFormInput] = useState({
     firstName: "",

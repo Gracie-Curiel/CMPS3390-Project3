@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./Signin.css";
 import { useNavigate } from 'react-router-dom';
+import { createRoot } from 'react-dom/client'
 
 export default function Signin() {
   const navigate = useNavigate();
@@ -50,15 +51,16 @@ export default function Signin() {
           setMessage("Incorrect Username or Password");
           return;
         }
+        localStorage.setItem('User', JSON.stringify(data));
         //takes the user to dashboard and passes the user json as state
-        navigate("/Dashboard", { state: data });
+        navigate("/Dashboard");
 
       } catch (error) {
         console.error(error);
       }
     }
     getUser();
-    //end of backend code
+    //end of backend code 
   }
   const isValidUsername = (userName) => {
     const validUserName = "@";
