@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./Signin.css";
+
 export default function Signin() {
-  
+  const navigate = useNavigate();
+
   const[formInput,setFormInput] = useState({
     userName:"",
     password:""
@@ -25,6 +28,7 @@ export default function Signin() {
   
   if(Object.keys(isValid).length === 0){
     setMessage("Login  is Sucessful!");
+    navigate("/dashboard");
   }else{
     setMessage("Invalid Username/Password");
   }
