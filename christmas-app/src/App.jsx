@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Signin from "./views/Signin.jsx";
 import Signup from "./views/Signup.jsx";
 import Dashboard from "./views/Dashboard.jsx";
+import Recipient from "./views/Recipient.jsx";
+import Giftlist from "./views/Giftlist.jsx";
 
 export default function App() {
   return (
@@ -12,6 +14,8 @@ export default function App() {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Signin" element={<Signin />} />
         <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Recipient" element={<Recipient />} />
+        <Route path="/Giftlist" element={<Giftlist />} />
       </Routes>
     </Router>
   );

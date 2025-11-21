@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 export default function Recipient() {
 //usesate for the inputs 
 //handlers = submit
