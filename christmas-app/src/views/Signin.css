@@ -4,7 +4,7 @@
       rgba(0, 0, 0, 0.6),
       rgba(0, 0, 0, 0.7)
     ),
-    url("../background.jpg") center/cover no-repeat;
+    url("https://cdn.pixabay.com/photo/2019/12/18/19/22/christmas-4704706_1280.jpg") center/cover no-repeat;
   min-height: 100vh;
   display: flex;
   justify-content: center;

@@ -1,93 +1,63 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Signin.css";
-import { createRoot } from 'react-dom/client'
+import SigninViewModel from "../viewmodels/SigninViewModel";
 
 export default function Signin() {
   const navigate = useNavigate();
+  const vm = new SigninViewModel();
 
   const [formInput, setFormInput] = useState({
     userName: "",
     password: ""
-  })
+  });
   const [loginError, setLoginError] = useState({
     userName: "",
     password: ""
-  })
+  });
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormInput({
-      ...formInput, [name]: value
-
+      ...formInput,
+      [name]: value
     });
-  }
-  const handleSubmit = (e) => {
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const isValid = validateLoginInput();
-
-    if (Object.keys(isValid).length === 0) {
-      //setMessage("Login  is Sucessful!");
-    } else {
-      setMessage("Invalid Username/Password");
-    }
-    // < = api/login verifying if thw password and username is correct. will insert more stuff here =>
-    //new backend code
-    async function getUser() {
-      let url = "https://artemis.cs.csub.edu/~nwilemon/proj3/getUser.php?username=" + encodeURIComponent(formInput.userName);
-      let options = { method: 'GET' };
-      try {
-        const response = await fetch(url, options);
-        const data = await response.json();
-        console.log(data);
-        //if username is wrong, it will search for users with that username, and return null
-        if (data == null) {
-          setMessage("Incorrect Username or Password");
-          return;
-        }
-        if (formInput.userName != data.username || formInput.password != data.pass) {
-          setMessage("Incorrect Username or Password");
-          return;
-        }
-        localStorage.setItem('User', JSON.stringify(data));
-        //takes the user to dashboard and passes the user json as state
-        navigate("/Dashboard");
-
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getUser();
-    //end of backend code 
-  }
-  const isValidUsername = (userName) => {
-    const validUserName = "@";
-    if (userName.includes("@")) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  const validateLoginInput = () => {
-    let errors = {};
-    if (!formInput.userName) {
-      errors.userName = "Username is required!";
-    } else if (!isValidUsername(formInput.userName)) {
-      errors.userName = "Username must contain '@'";
-    }
-    if (!formInput.password) {
-      errors.password = "Password is required";
-    }
+    // use ViewModel to validate
+    const errors = vm.validateLoginInput(formInput);
     setLoginError(errors);
-    return errors;
-  }
+
+    if (Object.keys(errors).length !== 0) {
+      setMessage("Invalid Username/Password");
+      return;
+    } else {
+      // setMessage("Login is Successful!"); // optional
+    }
+
+    // backend login via ViewModel
+    const result = await vm.getUser(formInput);
+
+    if (!result.ok) {
+      setMessage(result.message);
+      return;
+    }
+
+    // success: save user + navigate
+    localStorage.setItem('User', JSON.stringify(result.data));
+    navigate("/Dashboard");
+  };
+
   return (
     <div className="signin-bg">
       <form onSubmit={handleSubmit}>
         <div className="form-card">
           <h2 className="Title-2">Sign In</h2>
+
           <label>User Name:</label>
           <br />
           <input

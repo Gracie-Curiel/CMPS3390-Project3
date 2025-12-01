@@ -1,0 +1,81 @@
+// src/viewmodels/SignupViewModel.js
+
+export default class SignupViewModel {
+  constructor() {
+    this.allUsers = []; // stores all users fetched
+  }
+
+  async loadAllUsers() {
+    let url = "https://artemis.cs.csub.edu/~nwilemon/proj3/allUsers.php";
+    let options = { method: "GET" };
+
+    try {
+      const response = await fetch(url, options);
+      this.allUsers = Object.values(await response.json());
+      console.log(this.allUsers);
+      return this.allUsers;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
+  isValidUsername(userName) {
+    return userName.includes("@");
+  }
+
+  validateFormInput(formInput) {
+    let errors = {};
+
+    if (!formInput.firstName) errors.firstName = "Name is required!";
+    if (!formInput.lastName) errors.lastName = "Name is required!";
+
+    if (!formInput.userName) {
+      errors.userName = "Username is required!";
+    } else if (!this.isValidUsername(formInput.userName)) {
+      errors.userName = "Username must contain '@'";
+    }
+
+    if (!formInput.password) errors.password = "Password is required";
+
+    if (!formInput.confirmPassword) {
+      errors.confirmPassword = "Password needs confirmation";
+    } else if (formInput.confirmPassword !== formInput.password) {
+      errors.confirmPassword = "Error! Password needs to match";
+    }
+
+    // check if username already exists
+    this.allUsers.forEach((user) => {
+      if (user.username === formInput.userName) {
+        errors.userName = "Username is already in use!";
+      }
+    });
+
+    return errors;
+  }
+
+  async createUser(formInput) {
+    let url =
+      "https://artemis.cs.csub.edu/~nwilemon/proj3/createUser.php?username=" +
+      encodeURIComponent(formInput.userName) +
+      "&Fname=" +
+      encodeURIComponent(formInput.firstName) +
+      "&Lname=" +
+      encodeURIComponent(formInput.lastName) +
+      "&pass=" +
+      encodeURIComponent(formInput.password) +
+      "&totalBudget=0&spentBudget=0";
+
+    let options = { method: "GET" };
+
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+      console.log(data);
+      return true;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  }
+}
