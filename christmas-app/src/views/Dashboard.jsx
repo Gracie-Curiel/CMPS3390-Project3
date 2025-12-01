@@ -1,7 +1,7 @@
 import "./Dashboard.css";
 import { Link, useNavigate } from "react-router-dom";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
-
+import Navbar from "./Navbar.jsx";
 let user = JSON.parse(localStorage.getItem('User'));
 
 export default function Dashboard({ totalBudget, totalSpent }) {
@@ -17,33 +17,22 @@ export default function Dashboard({ totalBudget, totalSpent }) {
   const Colors = ["#4CAF50", "#FF6B6B"];
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="dashboard-container p-8">
       {/* NAV BAR */}
-      <div className="flex-1">
-        <a className="text-2xl font-bold text-red-500">Christmas Gift Tracker</a>
-      </div>
-      <div className="flex-none">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Gift List</a>
-          </li>
-          <li>
-            <Link to="/Signin">Log Out</Link>
-          </li>
-        </ul>
-      </div>
+      <Navbar />
 
       {/* PIE CHART */}
-      <PieChart width={500} height={500}>
-        <Pie data={data} dataKey="value" nameKey="name" outerRadius={200}>
-          {data.map((entry, index) => (
-            <Cell key={index} fill={Colors[index]} />
-          ))}
-        </Pie>
-        <Tooltip />
-      </PieChart>
-
-      {/* USER INPUT */}
+      <div className="flex justify-center mt-12">
+        <PieChart width={500} height={500}>
+          <Pie data={data} dataKey="value" nameKey="name" outerRadius={200}>
+            {data.map((entry, index) => (
+              <Cell key={index} fill={Colors[index]} />
+            ))}
+          </Pie>
+          <Tooltip />
+        </PieChart>
+        {/*
+              
       <div className="flex flex-col items-center mt-6">
         <input
           type="number"
@@ -60,6 +49,7 @@ export default function Dashboard({ totalBudget, totalSpent }) {
             Subtract
           </button>
         </div>
+        */}
       </div>
     </div>
   );

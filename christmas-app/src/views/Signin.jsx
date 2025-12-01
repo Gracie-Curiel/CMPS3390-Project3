@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Signin.css";
-import { useNavigate } from 'react-router-dom';
 import { createRoot } from 'react-dom/client'
 
 export default function Signin() {

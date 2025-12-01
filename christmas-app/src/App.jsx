@@ -5,6 +5,7 @@ import Signup from "./views/Signup.jsx";
 import Dashboard from "./views/Dashboard.jsx";
 import Recipient from "./views/Recipient.jsx";
 import Giftlist from "./views/Giftlist.jsx";
+import Navbar from "./views/Navbar.jsx";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Recipient" element={<Recipient />} />
         <Route path="/Giftlist" element={<Giftlist />} />
+        <Route path="/Navbar" element={<Navbar/>} />
       </Routes>
     </Router>
   );
