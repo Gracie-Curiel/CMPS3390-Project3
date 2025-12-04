@@ -11,40 +11,43 @@ export default class DashboardViewModel {
   }
 
   getChartData() {
-    const updatedUser = JSON.parse(localStorage.getItem("User"));
-    this.user = updatedUser;
-
     return [
-      { name: "Total-Budget", value: updatedUser?.totalBudget || 0 },
-      { name: "Total-Spent", value: updatedUser?.spentBudget || 0 },
+      { name: "Total-Budget", value: this.user.totalBudget },
+      { name: "Total-Spent", value: this.user.spentBudget },
     ];
   }
-
 
   // ------------------------------------------
   // Your exact functions moved inside the class
   // ------------------------------------------
 
-  async updateBudget() {
-    if (!isNaN(this.newBudget)) {
-      let url =
-        "https://artemis.cs.csub.edu/~nwilemon/proj3/setBudget.php?username=" +
-        encodeURIComponent(this.user.username) +
-        "&budget=" +
-        encodeURIComponent(this.newBudget);
+async updateBudget() {
+  if (!isNaN(this.newBudget)) {
+    let url =
+      "https://artemis.cs.csub.edu/~nwilemon/proj3/setBudget.php?username=" +
+      encodeURIComponent(this.user.username) +
+      "&budget=" +
+      encodeURIComponent(this.newBudget);
 
-      let options = { method: "GET" };
-      try {
-        const response = await fetch(url, options);
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      console.log("Budget not a number");
+    let options = { method: "GET" };
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+      console.log(data);
+
+      this.updateLocalUserBudget(this.newBudget);
+
+      return true;
+    } catch (error) {
+      console.error(error);
+      return false;
     }
+  } else {
+    console.log("Budget not a number");
+    return false;
   }
+}
+
 
   async addRecipient() {
     let recName = "John";

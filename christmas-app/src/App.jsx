@@ -6,6 +6,7 @@ import Dashboard from "./views/Dashboard.jsx";
 import Recipient from "./views/Recipient.jsx";
 import Giftlist from "./views/Giftlist.jsx";
 import Navbar from "./views/Navbar.jsx";
+import Budget from "./views/Budget.jsx";
 
 export default function App() {
   return (
@@ -18,6 +19,8 @@ export default function App() {
         <Route path="/Recipient" element={<Recipient />} />
         <Route path="/Giftlist" element={<Giftlist />} />
         <Route path="/Navbar" element={<Navbar/>} />
+        <Route path="/Budget" element={<Budget/>} />
+
       </Routes>
     </Router>
   );

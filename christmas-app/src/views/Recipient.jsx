@@ -1,14 +1,16 @@
 import { useState } from "react";
 import RecipientViewModel from "../viewmodels/RecipientViewModel";
+import GiftlistViewModel from "../viewmodels/GiftlistViewModel";
 
 export default function Recipient() {
   const vm = new RecipientViewModel();
+  const giftVM = new GiftlistViewModel();
 
   const [formInput, setFormInput] = useState({
     name: "",
     relationship: "",
     budget: "",
-    notes: "",
+    gift: "",
   });
 
   const [formError, setFormError] = useState({});
@@ -22,11 +24,31 @@ export default function Recipient() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // ask ViewModel to validate
     const errors = vm.validateInput(formInput);
     setFormError(errors);
 
     if (Object.keys(errors).length === 0) {
+      // 1️⃣ Save recipient to gift list
+      giftVM.addRecipient(formInput);
+
+      // 2️⃣ Update TOTAL SPENT in User object
+      let user = JSON.parse(localStorage.getItem("User"));
+      if (user) {
+        user.spentBudget = Number(user.spentBudget || 0) + Number(formInput.budget);
+        localStorage.setItem("User", JSON.stringify(user));
+      }
+
+      // 3️⃣ Auto-close the modal
+      document.getElementById("recipient_modal").close();
+
+      // 4️⃣ Clear form
+      setFormInput({
+        name: "",
+        relationship: "",
+        budget: "",
+        gift: "",
+      });
+
       setMessage("Saved!");
     } else {
       setMessage("Error, please enter the required fields");
@@ -70,10 +92,10 @@ export default function Recipient() {
 
         <input
           type="text"
-          id="notes"
-          name="notes"
-          value={formInput.notes}
-          placeholder="Notes (optional)"
+          id="gift"
+          name="gift"
+          value={formInput.gift}
+          placeholder="Gift"
           onChange={handleChange}
         />
 
