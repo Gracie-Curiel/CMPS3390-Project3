@@ -61,9 +61,17 @@ export default function Dashboard() {
 
           {/* Budget panel */}
           <div className="stats-panel">
+            <h2 className="over-budget">
+              {vm.user.spentBudget > vm.user.totalBudget
+                ? "You are over budget"
+                : "You are within budget"}
+            </h2>
+
+            <p><strong>Total Budget:</strong> ${vm.user.totalBudget}</p>
+            <p><strong>Total Spent:</strong> ${vm.user.spentBudget}</p>
+
             <Budget />
           </div>
-
         </div>
       </div>
     </div>
