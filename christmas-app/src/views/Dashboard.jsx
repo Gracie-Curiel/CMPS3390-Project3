@@ -16,7 +16,7 @@ export default function Dashboard() {
   }
 
   const [chartData, setChartData] = useState(vm.getChartData());
-  const data = chartData;  
+  const data = chartData;
   const Colors = ["#4CAF50", "#FF6B6B"];
 
   useEffect(() => {
@@ -28,32 +28,43 @@ export default function Dashboard() {
     return () => window.removeEventListener("budget-updated", refresh);
   }, []);
 
-  
-  
-
   return (
-    <div className="dashboard-container p-8">
+    <div className="dashboard-page">
+
       <Navbar />
 
-      <div className="flex justify-center mt-12 gap-12">
+      {/* RESTORED DASHBOARD CARD */}
+      <div className="dashboard-card">
+        <h1 className="dash-title">Dashboard</h1>
 
-        {vm.user?.totalBudget > 0 && (
-          <PieChart width={500} height={500}>
-            <Pie 
-              data={data}
-              dataKey="value"
-              nameKey="name"
-              outerRadius={200}
-            >
-              {data.map((entry, index) => (
-                <Cell key={index} fill={Colors[index]} />
-              ))}
-            </Pie>
-            <Tooltip />
-          </PieChart>
-        )}
+        <div className="dashboard-content">
 
-        <Budget />
+          {/* Ornament Chart */}
+          {vm.user?.totalBudget > 0 && (
+            <div className="ornament-container">
+              <div className="ornament-top"></div>
+
+              <PieChart width={200} height={200}>
+                <Pie
+                  data={data}
+                  dataKey="value"
+                  outerRadius={100}
+                >
+                  {data.map((entry, index) => (
+                    <Cell key={index} fill={Colors[index]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </div>
+          )}
+
+          {/* Budget panel */}
+          <div className="stats-panel">
+            <Budget />
+          </div>
+
+        </div>
       </div>
     </div>
   );
