@@ -1,32 +1,98 @@
-/* Dashboard.css */
+/* Whole page background */
+.dashboard-page {
+  min-height: 100vh;
+  padding: 30px;
+  font-family: Georgia, serif;
 
-/* Navbar background and shadow */
-.navbar {
-  background-color: #f9fafb; /* Slightly lighter than base-100 */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-  position: sticky;
-  top: 0;
-  z-index: 50;
+  background: 
+    linear-gradient(
+      rgba(255, 255, 255, 0.126)
+    ),
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ2_otMY2_tfGlT8Qfx6CUjRYvBK3_y9pRlw&s");
 }
 
-/* Hover transition for links */
-.navbar a {
-  transition: color 0.3s ease, background-color 0.3s ease;
+/* Navbar */
+.dashboard-nav {
+  background-color: #0d4d27;
+  color: white;
+  border-radius: 10px 10px 0 0;
 }
 
-.navbar a:hover {
-  color: #2563eb; /* Tailwind blue-600 */
+/* Dashboard card */
+.dashboard-card {
+  background: white;
+  width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* Dropdown menu styling */
-.menu ul {
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* Title */
+.dash-title {
+  color: #b32a1c;
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-/* Active or focused link */
-.menu a:focus,
-.menu a:active {
-  background-color: #e0e7ff; /* blue-100 */
-  font-weight: 500;
+/* Chart and text */
+.dashboard-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Ornament */
+
+.ornament-container {
+  text-align: center;
+}
+
+.ornament-top {
+  width: 40px;
+  height: 40px;
+  background: #d9c27f;
+  border-radius: 10px 10px 0 0;
+  margin: 0 auto -10px auto;
+}
+
+
+/* Panel */
+
+.stats-panel {
+  text-align: right;
+}
+
+.over-budget {
+  color: #b32a1c;
+  margin-bottom: 15px;
+}
+
+.input-area {
+  margin-top: 20px;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+/* Input */
+
+.input-area input {
+  background: white;
+  color: black;
+  border: 2px solid #ccc;
+  padding: 10px;
+  font-size: 1.1rem;
+}
+
+.input-area input::placeholder {
+  color: #666;
+}
+
+.input-area input {
+  border-radius: 8px;
 }
