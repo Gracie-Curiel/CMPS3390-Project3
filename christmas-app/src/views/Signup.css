@@ -1,0 +1,115 @@
+/* Background */
+.signup-bg {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.65),
+      rgba(0, 0, 0, 0.75)
+    ),
+    url("../background.jpg") center/cover no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Main card */
+.form-card {
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+/* Title */
+.Title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #ff4d4d; 
+}
+
+/* Input labels */
+label {
+  font-weight: 500;
+  display: block;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+/* Inputs */
+.form-input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-input::placeholder {
+  color: #ddd;
+}
+
+.form-input:focus {
+  border-color: #2ecc71; 
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  background-color: #ff4d4d; 
+  color: white;
+  font-weight: bold;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #e84343;
+}
+
+/* Links */
+#account {
+  color: #7a7a7a;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+#account a {
+  color: #fff; 
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#account a:hover {
+  text-decoration: underline;
+}
+
+/* Error and message text */
+p {
+  color: #ffb3b3;
+  font-size: 0.8rem;
+  margin: 0.2rem 0;
+}
+
+.msg p {
+  color: #2ecc71;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 1rem;
+}

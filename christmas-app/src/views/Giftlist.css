@@ -1,0 +1,169 @@
+/* Background for the page */
+.giftlist-bg {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url("https://cdn.pixabay.com/photo/2019/12/18/19/22/christmas-4704706_1280.jpg")
+      center/cover no-repeat;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Center ONLY the card, NOT the navbar */
+.giftlist-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+
+/* Center Card */
+.giftlist-card {
+  background: rgba(255, 255, 255, 0.9);
+  width: 90%;
+  max-width: 900px;
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Title */
+.giftlist-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #b30000;
+}
+
+/* Add Gift Button */
+#btn {
+  background-color: #b30000;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+#btn:hover {
+  background-color: #0d3b0d;
+  transform: scale(1.05);
+}
+
+/* Table */
+.gift-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.gift-table th {
+  background: #b30000;
+  color: white;
+  padding: 0.9rem;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.gift-table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.gift-table tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Empty-row text */
+.empty-row {
+  text-align: center;
+  padding: 1.5rem;
+  color: #555;
+  font-style: italic;
+}
+/* Modal background blur */
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+/* Modal Card Styled Like Signin Form */
+.custom-modal-box {
+  background: rgba(255, 255, 255, 0.95); /* same as .form-card */
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  width: 500px !important;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  color: #333;
+}
+
+/* Title in the modal */
+.custom-modal-box h2 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #b30000;
+  text-align: center;
+}
+
+/* Matching input fields */
+.custom-modal-box input {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 5px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  background: white;
+}
+
+/* Save button inside Recipient component */
+.custom-modal-box .btn {
+  background-color: #b30000;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+.custom-modal-box .btn:hover {
+  background-color: #0d3b0d;
+  transform: scale(1.05);
+}
+
+/* Close button */
+.modal-close-btn {
+  background-color: #b30000 !important;
+  color: white !important;
+  padding: 0.6rem 1.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.modal-close-btn:hover {
+  background-color: #0d3b0d !important;
+}
+
+/* Error messages */
+.custom-modal-box p {
+  color: #b30000;
+  font-size: 0.9rem;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
