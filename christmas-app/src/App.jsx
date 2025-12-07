@@ -7,6 +7,7 @@ import Recipient from "./views/Recipient.jsx";
 import Giftlist from "./views/Giftlist.jsx";
 import Navbar from "./views/Navbar.jsx";
 import Budget from "./views/Budget.jsx";
+import Countdown from "./views/Countdown.jsx";
 
 export default function App() {
   return (
@@ -20,7 +21,7 @@ export default function App() {
         <Route path="/Giftlist" element={<Giftlist />} />
         <Route path="/Navbar" element={<Navbar/>} />
         <Route path="/Budget" element={<Budget/>} />
-
+        <Route path="/Countdown" element={<Countdown />} />
       </Routes>
     </Router>
   );

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import Navbar from "./Navbar.jsx";
 import Budget from "./Budget.jsx";
+import Countdown from "./Countdown.jsx";
 import DashboardViewModel from "../viewmodels/DashboardViewModel";
 import { useState, useEffect } from "react";
 
@@ -74,6 +75,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+      <Countdown />
     </div>
   );
 }
