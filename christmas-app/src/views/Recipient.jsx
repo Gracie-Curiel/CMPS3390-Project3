@@ -1,10 +1,8 @@
 import { useState } from "react";
 import RecipientViewModel from "../viewmodels/RecipientViewModel";
-import GiftlistViewModel from "../viewmodels/GiftlistViewModel";
 
 export default function Recipient() {
   const vm = new RecipientViewModel();
-  const giftVM = new GiftlistViewModel();
 
   const [formInput, setFormInput] = useState({
     name: "",
@@ -24,45 +22,39 @@ export default function Recipient() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // validate in viewmodel
     const errors = vm.validateInput(formInput);
     setFormError(errors);
 
-    if (Object.keys(errors).length === 0) {
-      // 1️⃣ Save recipient to gift list
-      giftVM.addRecipient(formInput);
-
-      // 2️⃣ Update TOTAL SPENT in User object
-      let user = JSON.parse(localStorage.getItem("User"));
-      if (user) {
-        user.spentBudget = Number(user.spentBudget || 0) + Number(formInput.budget);
-        localStorage.setItem("User", JSON.stringify(user));
-      }
-
-      // 3️⃣ Auto-close the modal
-      document.getElementById("recipient_modal").close();
-
-      // 4️⃣ Clear form
-      setFormInput({
-        name: "",
-        relationship: "",
-        budget: "",
-        gift: "",
-      });
-
-      setMessage("Saved!");
-    } else {
+    if (Object.keys(errors).length > 0) {
       setMessage("Error, please enter the required fields");
+      return;
     }
+
+    // save recipient (viewmodel handles everything)
+    vm.saveRecipient(formInput);
+
+    // close modal
+    document.getElementById("recipient_modal").close();
+
+    // reset form
+    setFormInput({
+      name: "",
+      relationship: "",
+      budget: "",
+      gift: "",
+    });
+
+    setMessage("Saved!");
   };
 
   return (
     <div className="Recipient">
       <form onSubmit={handleSubmit}>
-        <h2 className="Title-4">Add Recipient</h2>
+        <h2>Add Recipient</h2>
 
         <input
           type="text"
-          id="name"
           name="name"
           value={formInput.name}
           placeholder="Name"
@@ -72,7 +64,6 @@ export default function Recipient() {
 
         <input
           type="text"
-          id="relationship"
           name="relationship"
           value={formInput.relationship}
           placeholder="Relationship"
@@ -82,7 +73,6 @@ export default function Recipient() {
 
         <input
           type="number"
-          id="budget"
           name="budget"
           value={formInput.budget}
           placeholder="Budget"
@@ -92,7 +82,6 @@ export default function Recipient() {
 
         <input
           type="text"
-          id="gift"
           name="gift"
           value={formInput.gift}
           placeholder="Gift"
