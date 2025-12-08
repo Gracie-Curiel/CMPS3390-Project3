@@ -28,27 +28,25 @@ export default function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // use ViewModel to validate
     const errors = vm.validateLoginInput(formInput);
     setLoginError(errors);
 
     if (Object.keys(errors).length !== 0) {
       setMessage("Invalid Username/Password");
       return;
-    } else {
-      // setMessage("Login is Successful!"); // optional
     }
 
-    // backend login via ViewModel
-    const result = await vm.getUser(formInput);
+    vm.username = formInput.userName;
+    vm.password = formInput.password;
 
-    if (!result.ok) {
-      setMessage(result.message);
+    const user = await vm.getUser();
+
+    if (!user || user.error) {
+      setMessage("Login failed: Invalid credentials");
       return;
     }
 
-    // success: save user + navigate
-    localStorage.setItem('User', JSON.stringify(result.data));
+    localStorage.setItem("User", JSON.stringify(user));
     navigate("/Dashboard");
   };
 
@@ -58,7 +56,7 @@ export default function Signin() {
         <div className="form-card">
           <h2 className="Title-2">Sign In</h2>
 
-          <label>Email:</label>
+          <label>Username:</label>
           <br />
           <input
             type="text"
@@ -66,7 +64,7 @@ export default function Signin() {
             className="form-input"
             name="userName"
             value={formInput.userName}
-            placeholder="Email"
+            placeholder="Enter username"
             onChange={handleChange}
           />
           <p>{loginError.userName}</p>
@@ -87,7 +85,7 @@ export default function Signin() {
           <button type="submit" className="btn">Login</button>
 
           <p id="account">
-            Need to create an account? <a href="/signup">Click here</a>
+            Need an account? <a href="/signup">Click here</a>
           </p>
 
           <div className="msg">

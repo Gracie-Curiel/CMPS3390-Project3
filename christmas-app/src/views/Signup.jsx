@@ -87,17 +87,18 @@ export default function Signup() {
               onChange={handleChange}
             />
             <p>{formError.lastName}</p>
-
-            <label htmlFor="userName">Email:</label><br />
+            
+            <label htmlFor="userName">Username:</label><br />
             <input
               type="text"
               id="userName"
               className="form-input"
               name="userName"
               value={formInput.userName}
-              placeholder="Email"
+              placeholder="Choose a username"
               onChange={handleChange}
             />
+
             <p>{formError.userName}</p>
 
             <label htmlFor="password">Password:</label><br />
