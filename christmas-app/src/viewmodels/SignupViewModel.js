@@ -21,7 +21,7 @@ export default class SignupViewModel {
   }
 
   isValidUsername(userName) {
-    return userName.includes("@");
+    return userName.length >= 4;
   }
 
   validateFormInput(formInput) {
@@ -33,7 +33,7 @@ export default class SignupViewModel {
     if (!formInput.userName) {
       errors.userName = "Username is required!";
     } else if (!this.isValidUsername(formInput.userName)) {
-      errors.userName = "Username must contain '@'";
+      errors.userName = "Username must be atleast 4 characters !";
     }
 
     if (!formInput.password) errors.password = "Password is required";

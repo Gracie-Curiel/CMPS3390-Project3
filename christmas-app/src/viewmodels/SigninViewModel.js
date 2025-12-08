@@ -1,8 +1,7 @@
 // src/viewmodels/SigninViewModel.js
 export default class SigninViewModel {
   isValidUsername(userName) {
-    const validUserName = "@";
-    return userName.includes(validUserName);
+    return userName.length >= 4;
   }
 
   validateLoginInput(formInput) {
@@ -11,7 +10,7 @@ export default class SigninViewModel {
     if (!formInput.userName) {
       errors.userName = "Username is required!";
     } else if (!this.isValidUsername(formInput.userName)) {
-      errors.userName = "Username must contain '@'";
+    errors.userName = "Username must be atleast 4 characters !";
     }
 
     if (!formInput.password) {
@@ -33,7 +32,7 @@ export default class SigninViewModel {
       console.log(data);
 
       // if username is wrong, API returns null
-      if (data == null) {
+      if (data == null){
         return { ok: false, message: "Incorrect Username or Password" };
       }
 
@@ -44,7 +43,7 @@ export default class SigninViewModel {
         return { ok: false, message: "Incorrect Username or Password" };
       }
 
-      // success
+      // success</header>
       return { ok: true, data };
     } catch (error) {
       console.error(error);
