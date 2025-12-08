@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import santaImg from "./santa.png";
+import santaImg from "../assets/santa.png";
 
 
 export default function Countdown() {
@@ -35,7 +35,7 @@ export default function Countdown() {
             <>Loading…</>
             ) : (
             <>
-                🎅 Ho ho ho!
+                Ho ho ho!
                 <br />
                 Christmas is in <strong>{daysLeft}</strong> days!
             </>

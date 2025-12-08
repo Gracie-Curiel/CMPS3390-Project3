@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import GiftlistViewModel from "../viewmodels/GiftlistViewModel";
 import Recipient from "./Recipient";
 import Navbar from "./Navbar";
-import "./Giftlist.css";
+import "../styles/Giftlist.css";
 
 export default function Giftlist() {
   const vm = new GiftlistViewModel();

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DashboardViewModel from "../viewmodels/DashboardViewModel";
-import "./Budget.css";
+import "../styles/Budget.css";
 
 export default function Budget() {
   const vm = new DashboardViewModel();

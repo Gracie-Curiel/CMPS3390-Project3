@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./Signin.css";
+import "../styles/Signin.css";
 import SigninViewModel from "../viewmodels/SigninViewModel";
 
 export default function Signin() {

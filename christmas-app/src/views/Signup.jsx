@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Signup.css";
+import "../styles/Signup.css";
 import SignupViewModel from "../viewmodels/SignupViewModel";
 
 export default function Signup() {
