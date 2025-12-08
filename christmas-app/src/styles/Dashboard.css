@@ -13,16 +13,18 @@
 
 /* Navbar */
 .dashboard-nav {
-  background-color: #0d4d27;
-  color: white;
-  border-radius: 10px 10px 0 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 /* Dashboard card */
 .dashboard-card {
   background: white;
   width: 700px;
-  margin: 40px auto;
+  margin: 100px auto;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);

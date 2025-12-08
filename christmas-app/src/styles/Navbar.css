@@ -9,14 +9,17 @@
   position: sticky;
   top: 0;
   z-index: 100;
+
+  font-family: Georgia, serif; /* << MATCH DASHBOARD FONT */
 }
 
 /* APP TITLE */
 .navbar .flex-1 a {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #d32f2f; /* Christmas red */
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #b32a1c; /* same red as .dash-title */
   text-decoration: none;
+  font-family: Georgia, serif; /* ensure title stays serif */
 }
 
 /* MENU LIST */
@@ -26,28 +29,31 @@
   gap: 20px;
   padding: 0;
   margin: 0;
+
+  font-family: Georgia, serif; /* consistent typography */
 }
 
 /* MENU ITEMS */
 .menu li a {
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 500;
   color: #333;
   padding: 8px 12px;
   border-radius: 6px;
   transition: 0.25s ease-in-out;
+  font-family: Georgia, serif; /* serif for links */
 }
 
 /* HOVER EFFECT */
 .menu li a:hover {
-  background-color: #f3f3f3;
-  color: #b71c1c;
+  background-color: #f7f3f3;
+  color: #b32a1c; /* matches dashboard red */
 }
 
 /* ACTIVE PAGE STYLE (optional) */
 .menu li a.active {
-  background-color: #ffe4e4;
-  color: #d32f2f;
+  background-color: #ffeaea;
+  color: #b32a1c;
   font-weight: 600;
 }
