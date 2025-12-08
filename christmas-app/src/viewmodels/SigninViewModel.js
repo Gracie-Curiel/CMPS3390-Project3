@@ -15,8 +15,6 @@ export default class SigninViewModel {
 
     if (!formInput.userName) {
       errors.userName = "Username is required!";
-    } else if (!this.isValidUsername(formInput.userName)) {
-    errors.userName = "Username must be atleast 4 characters !";
     }
 
     if (!formInput.password) {
@@ -36,25 +34,18 @@ export default class SigninViewModel {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
 
-      // if username is wrong, API returns null
-      if (data == null){
-        return { ok: false, message: "Incorrect Username or Password" };
+      // backend returns null when no match
+      if (data == null) {
+        return { error: true, message: "Invalid username or password" };
       }
 
-      if (
-        formInput.userName !== data.username ||
-        formInput.password !== data.pass
-      ) {
-        return { ok: false, message: "Incorrect Username or Password" };
-      }
+      // return the raw user object
+      return data;
 
-      // success</header>
-      return { ok: true, data };
     } catch (error) {
       console.error("Login error:", error);
-      return null;
+      return { error: true, message: "Server error" };
     }
   }
 }
