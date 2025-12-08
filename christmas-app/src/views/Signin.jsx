@@ -58,7 +58,7 @@ export default function Signin() {
         <div className="form-card">
           <h2 className="Title-2">Sign In</h2>
 
-          <label>User Name:</label>
+          <label>Email:</label>
           <br />
           <input
             type="text"
@@ -66,7 +66,7 @@ export default function Signin() {
             className="form-input"
             name="userName"
             value={formInput.userName}
-            placeholder="User Name"
+            placeholder="Email"
             onChange={handleChange}
           />
           <p>{loginError.userName}</p>

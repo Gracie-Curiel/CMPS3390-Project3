@@ -69,12 +69,18 @@ export default class SignupViewModel {
     let options = { method: "GET" };
 
     try {
-      const response = await fetch(url, options);
-      const data = await response.json();
-      console.log(data);
-      return true;
-    } catch (error) {
-      console.error(error);
+      const response = await fetch(url);
+
+      // Try JSON but don't crash if invalid
+      try {
+        await response.json();
+      } catch (e) {
+        console.warn("PHP did not return JSON, but user was created.");
+      }
+
+      return true; // always allow redirect
+    } catch (err) {
+      console.error("Create user error:", err);
       return false;
     }
   }

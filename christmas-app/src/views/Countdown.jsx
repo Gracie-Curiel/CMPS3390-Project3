@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import santaImg from "./santa.png";
+import "./Countdown.css";
 
 export default function Countdown() {
   const [daysLeft, setDaysLeft] = useState(null);

@@ -47,7 +47,9 @@ export default function Signup() {
 
       if (created) {
         setMessage("Form is submitted successfully!");
-        navigate("/Signin");
+        setTimeout(() => {
+          navigate("/Signin");
+        }, 800);
       }
     } else {
       setMessage("Please fix the errors above before submitting.");
@@ -55,6 +57,7 @@ export default function Signup() {
   };
 
   return (
+    <div className="signup-bg">
     <form onSubmit={handleSubmit}>
       <div id="form-container">
         <div className="form-card">
@@ -85,14 +88,14 @@ export default function Signup() {
             />
             <p>{formError.lastName}</p>
 
-            <label htmlFor="userName">User Name:</label><br />
+            <label htmlFor="userName">Email:</label><br />
             <input
               type="text"
               id="userName"
               className="form-input"
               name="userName"
               value={formInput.userName}
-              placeholder="UserName"
+              placeholder="Email"
               onChange={handleChange}
             />
             <p>{formError.userName}</p>
@@ -137,5 +140,6 @@ export default function Signup() {
         </div>
       </div>
     </form>
+    </div>
   );
 }
