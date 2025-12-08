@@ -15,7 +15,7 @@ export default function Signup() {
     lastName: "",
     userName: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const [formError, setFormError] = useState({
@@ -23,7 +23,7 @@ export default function Signup() {
     lastName: "",
     userName: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   // Load all users first (same as your old getUser)
@@ -58,23 +58,23 @@ export default function Signup() {
 
   return (
     <div className="signup-bg">
-    <form onSubmit={handleSubmit}>
-      <div id="form-container">
-        <div className="form-card">
-          <h1 className="Title">Login/Signup </h1>
-          <div className="Input-container">
-            
-            <label htmlFor="firstName"> First Name:</label><br />
-            <input
-              type="text"
-              id="firstName"
-              className="form-input"
-              name="firstName"
-              value={formInput.firstName}
-              placeholder="First Name"
-              onChange={handleChange}
-            />
-            <p>{formError.firstName}</p>
+      <form onSubmit={handleSubmit}>
+        <div id="form-container">
+          <div className="form-card">
+            <h1 className="Title">Login/Signup </h1>
+            <div className="Input-container">
+              <label htmlFor="firstName"> First Name:</label>
+              <br />
+              <input
+                type="text"
+                id="firstName"
+                className="form-input"
+                name="firstName"
+                value={formInput.firstName}
+                placeholder="First Name"
+                onChange={handleChange}
+              />
+              <p>{formError.firstName}</p>
 
             <label htmlFor="lastName">Last Name:</label><br />
             <input
@@ -101,46 +101,45 @@ export default function Signup() {
 
             <p>{formError.userName}</p>
 
-            <label htmlFor="password">Password:</label><br />
-            <input
-              type="password"
-              id="password"
-              className="form-input"
-              name="password"
-              value={formInput.password}
-              placeholder="Password"
-              onChange={handleChange}
-            />
-            <p>{formError.password}</p>
+              <label htmlFor="password">Password:</label>
+              <br />
+              <input
+                type="password"
+                id="password"
+                className="form-input"
+                name="password"
+                value={formInput.password}
+                placeholder="Password"
+                onChange={handleChange}
+              />
+              <p>{formError.password}</p>
 
-            <label htmlFor="confirmPassword">Confirm Password:</label><br />
-            <input
-              type="password"
-              id="confirmPassword"
-              className="form-input"
-              name="confirmPassword"
-              value={formInput.confirmPassword}
-              onChange={handleChange}
-              placeholder="Re-enter password"
-            />
-            <p>{formError.confirmPassword}</p>
+              <label htmlFor="confirmPassword">Confirm Password:</label>
+              <br />
+              <input
+                type="password"
+                id="confirmPassword"
+                className="form-input"
+                name="confirmPassword"
+                value={formInput.confirmPassword}
+                onChange={handleChange}
+                placeholder="Re-enter password"
+              />
+              <p>{formError.confirmPassword}</p>
+            </div>
 
-          </div>
+            <button type="submit" className="btn">
+              Create an account
+            </button>
 
-          <button type="submit" className="btn">
-            Create an account
-          </button>
+            <p id="account">
+              Already have an account? <a href="/Signin">Login</a>
+            </p>
 
-          <p id="account">
-            Already have an account? <a href="/Signin">Login</a>
-          </p>
-
-          <div className="msg">
-            {message && <p>{message}</p>}
+            <div className="msg">{message && <p>{message}</p>}</div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
     </div>
   );
 }

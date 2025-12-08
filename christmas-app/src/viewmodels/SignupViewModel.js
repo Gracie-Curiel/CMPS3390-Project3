@@ -20,7 +20,7 @@ export default class SignupViewModel {
 
   // ✅ Username no longer needs "@"
   isValidUsername(userName) {
-    return userName.length >= 3; // simple rule — can change!
+    return userName.length >= 4;
   }
 
   validateFormInput(formInput) {
@@ -33,7 +33,7 @@ export default class SignupViewModel {
     if (!formInput.userName) {
       errors.userName = "Username is required!";
     } else if (!this.isValidUsername(formInput.userName)) {
-      errors.userName = "Username must be at least 3 characters";
+      errors.userName = "Username must be atleast 4 characters !";
     }
 
     if (!formInput.password) {

@@ -17,33 +17,29 @@ export default function Countdown() {
     setDaysLeft(diff);
   }, []);
 
-    return (
+  return (
     <div className="w-full flex justify-center mt-6">
-
-        <div className="chat chat-start">
-
+      <div className="chat chat-start">
         {/* Bigger Santa avatar */}
         <div className="chat-image avatar">
-            <div className="w-80 rounded-full">
+          <div className="w-80 rounded-full">
             <img src={santaImg} alt="Santa" />
-            </div>
+          </div>
         </div>
 
         {/* Bigger centered chat bubble */}
         <div className="chat-bubble p-5 text-xl max-w-lg leading-relaxed">
-            {daysLeft === null ? (
+          {daysLeft === null ? (
             <>Loading…</>
-            ) : (
+          ) : (
             <>
                 Ho ho ho!
                 <br />
                 Christmas is in <strong>{daysLeft}</strong> days!
             </>
-            )}
+          )}
         </div>
-
-        </div>
+      </div>
     </div>
-    );
-
+  );
 }

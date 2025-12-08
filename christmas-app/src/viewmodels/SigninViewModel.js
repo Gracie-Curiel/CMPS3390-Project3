@@ -7,7 +7,7 @@ export default class SigninViewModel {
   }
 
   isValidUsername(userName) {
-    return userName.includes("@");
+    return userName.length >= 4;
   }
 
   validateLoginInput(formInput) {
@@ -15,6 +15,8 @@ export default class SigninViewModel {
 
     if (!formInput.userName) {
       errors.userName = "Username is required!";
+    } else if (!this.isValidUsername(formInput.userName)) {
+    errors.userName = "Username must be atleast 4 characters !";
     }
 
     if (!formInput.password) {
@@ -34,7 +36,22 @@ export default class SigninViewModel {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      return data; // THIS goes back to Signin.jsx
+      console.log(data);
+
+      // if username is wrong, API returns null
+      if (data == null){
+        return { ok: false, message: "Incorrect Username or Password" };
+      }
+
+      if (
+        formInput.userName !== data.username ||
+        formInput.password !== data.pass
+      ) {
+        return { ok: false, message: "Incorrect Username or Password" };
+      }
+
+      // success</header>
+      return { ok: true, data };
     } catch (error) {
       console.error("Login error:", error);
       return null;
