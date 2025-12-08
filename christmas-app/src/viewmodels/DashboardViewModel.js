@@ -25,26 +25,48 @@ export default class DashboardViewModel {
   // Your exact functions moved inside the class
   // ------------------------------------------
 
-  async updateBudget() {
-    if (!isNaN(this.newBudget)) {
-      let url =
-        "https://artemis.cs.csub.edu/~nwilemon/proj3/setBudget.php?username=" +
-        encodeURIComponent(this.user.username) +
-        "&budget=" +
-        encodeURIComponent(this.newBudget);
-
-      let options = { method: "GET" };
-      try {
-        const response = await fetch(url, options);
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      console.log("Budget not a number");
-    }
+async updateBudget() {
+  if (isNaN(this.newBudget)) {
+    console.log("Budget not a number");
+    return false;
   }
+
+  let url =
+    "https://artemis.cs.csub.edu/~nwilemon/proj3/setBudget.php?username=" +
+    encodeURIComponent(this.user.username) +
+    "&budget=" +
+    encodeURIComponent(this.newBudget);
+
+  let options = { method: "GET" };
+
+  try {
+    const response = await fetch(url, options);
+
+    // 🔹 PHP returns plain text like "It worked.", NOT JSON
+    const text = await response.text();
+    console.log("Budget API response:", text);
+
+    // 🔹 Safely update localStorage User
+    const storedUser = JSON.parse(localStorage.getItem("User")) || {};
+    const updatedUser = {
+      ...storedUser,
+      totalBudget: Number(this.newBudget),
+    };
+
+    this.user = updatedUser;
+    localStorage.setItem("User", JSON.stringify(updatedUser));
+
+    // 🔹 Tell Dashboard to refresh chart
+    window.dispatchEvent(new Event("budget-updated"));
+
+    return true;
+  } catch (error) {
+    console.error("Budget update error:", error);
+    return false;
+  }
+}
+
+
 
   async addRecipient() {
     let recName = "John";

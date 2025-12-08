@@ -67,10 +67,8 @@ export default function Dashboard() {
                 ? "You are over budget"
                 : "You are within budget"}
             </h2>
-
-            <p><strong>Total Budget:</strong> ${vm.user.totalBudget}</p>
-            <p><strong>Total Spent:</strong> ${vm.user.spentBudget}</p>
-
+<p><strong>Total Budget:</strong> ${chartData[0]?.value}</p>
+<p><strong>Total Spent:</strong> ${chartData[1]?.value}</p>
             <Budget />
           </div>
         </div>
